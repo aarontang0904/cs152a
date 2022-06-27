@@ -1,0 +1,25 @@
+<h1>Find Course by Subject</h1>
+<form method = "post" action="/coursesBySubject">
+    Enter course subject: <input type = "text" name = "subject">
+    <br>
+    Enter course term: <input type = "text" name = "term">
+    <br>
+    <input type = "submit">
+</form>
+<hr>
+
+<% if (courses.length==0){ %>
+No courses to display
+<% } else {%> 
+    <h1>Courses</h1>
+
+<% for (course of courses) {%>
+<%= course.subject %> <%= course.coursenum %> 
+id = <%= course.courseId %> <%= course.name %>
+<% if (schedIds.includes(course.id)){%>
+    scheduled
+<% } else {%>
+<a href="/addCourse/<%= course._id%>">add to schedule</a>
+<hr>
+<% }}} %>
+

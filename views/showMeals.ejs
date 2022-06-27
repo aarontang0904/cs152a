@@ -1,0 +1,9 @@
+<h1>Show Meals containing <%= ingredient %></h1>
+<% for(meal of meals){%> 
+    <%= meal.strMeal %> 
+    <img width="100" src="<%= meal.strMealThumb %>"/>
+    <hr>
+<% } %>
+
+
+<% if (meals.length == 0) {%> <h2>no meals</h2> <% } %>

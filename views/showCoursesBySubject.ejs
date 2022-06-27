@@ -1,0 +1,11 @@
+<h1>Courses</h1>
+<% for (course of courses) {%>
+<hr>
+<%= course.subject %> <%= course.coursenum %> <%= course.name %>
+<a href="/addCourse/<%= course._id%>">add to schedule</a>
+<% } %>
+
+
+<pre>
+    <%= JSON.stringify(courses,null,5) %>
+</pre>

@@ -1,0 +1,15 @@
+<ul>
+    <% for(course of courses) {%>
+        <li><%= course.courseId?.subject %>
+            <%= course.courseId?.coursenum %>
+            <%= course.courseId?.name %>
+            <a href="/deleteFromSchedule/<%= course.id %>"> delete</a>
+        </li>
+    <% } %>
+</ul>
+
+<!--
+<pre>
+    <%= JSON.stringify(courses, null,5) %>
+</pre>
+-->
