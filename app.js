@@ -57,6 +57,7 @@ const Course = require('./models/Course')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const { rmSync } = require('fs');
+const Contact = require('./models/Contact');
 
 var app = express();
 
@@ -328,6 +329,26 @@ app.post('/coursesBySubject',
   }
 )
 
+app.get('/exam5', (req,res,next) => res.render('exam5'))
+
+app.post('/exam5',
+  isLoggedIn,
+  async (req,res,next) => {
+    try{
+      const infoObj = {
+        name: res.locals.name,
+        email:res.locals.email,
+        phone: res.locals.phone,
+        comment: res.locals.comment,
+      }
+      const contactInfo = new Contact(infoObj);
+      await contactInfo.save();
+      res.redirect('/exam5') ;
+    }catch(err){
+      next(err);
+    }
+  }
+)
 
 
 app.get('/todo', (req,res,next) => res.render('todo'))
