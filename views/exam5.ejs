@@ -10,18 +10,18 @@
     </thead>
     <tbody>
         <tr>
-            <% for (cont of Contacts){%>
+            <% for (cont of contacts){%>
                 <td><%= cont.name%></td>
                 <td><%= cont.email%></td>
                 <td><%= cont.phone%></td>
-                <td><%= cont.comment%></td>
+                <td><%= cont.comments%></td>
             <% } %>
         </tr>
     </tbody>
 </table>
 <hr>
 <h1>Add new contact</h1>
-<form method="post" action="/todo">
+<form method="post" action="/exam5">
     <input type="text" name="name"> : -name
     <br>
     <input type="text" name="email"> : -email

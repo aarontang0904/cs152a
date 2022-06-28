@@ -328,20 +328,18 @@ app.post('/coursesBySubject',
   }
 )
 
-app.get('/exam5', (req,res,next) => res.render('exam5'))
+app.get('/exam5', 
+  async(req,res,next) => {
+    res.locals.contacts = await Contact.find();
+    res.render('exam5');
+  });
 
 app.post('/exam5',
   isLoggedIn,
   async (req,res,next) => {
     try {
       const {name,email,phone,comment} = req.body;
-      const infoObj = {
-        name: res.locals.name,
-        email:res.locals.email,
-        phone: res.locals.phone,
-        comment: res.locals.comment,
-      }
-      const contact = new Contact(infoObj);
+      const contact = new Contact({name,email,phone,comment});
       await contact.save();
       res.redirect('/exam5');
 
