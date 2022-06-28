@@ -1,0 +1,32 @@
+<h1>Contacts</h1>
+<table class="table table-bordered border-striped">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            for (cont of contact){%>
+                <td><%= cont.name%></td>
+                <td><%= cont.email%></td>
+                <td><%= cont.phone%></td>
+                <td><%= cont.comment%></td>
+            <% } %>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h1>Add new contact</h1>
+<form method="post" action="/todo">
+    <input type="text" name="name"> : -name
+    <br>
+    <input type="text" name="email"> : -email
+    <br>
+    <input type="number" name="phone"> : -phone
+    <input type="text" name="comment">: -comment
+    <input type="submit">
+</form>

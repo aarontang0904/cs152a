@@ -51,13 +51,12 @@ const isLoggedIn = (req,res,next) => {
 const ToDoItem = require('./models/ToDoItem');
 const Schedule = require('./models/Schedule');
 const Course = require('./models/Course')
-
+const Contact = require('./models/Contact')
 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const { rmSync } = require('fs');
-const Contact = require('./models/Contact');
 
 var app = express();
 
@@ -334,18 +333,21 @@ app.get('/exam5', (req,res,next) => res.render('exam5'))
 app.post('/exam5',
   isLoggedIn,
   async (req,res,next) => {
-    try{
+    try {
+      const {name,email,phone,comment} = req.body;
       const infoObj = {
         name: res.locals.name,
         email:res.locals.email,
         phone: res.locals.phone,
         comment: res.locals.comment,
       }
-      const contactInfo = new Contact(infoObj);
-      await contactInfo.save();
-      res.redirect('/exam5') ;
-    }catch(err){
-      next(err);
+      const contact = new Contact(infoObj);
+      await contact.save();
+      res.redirect('/exam5');
+
+
+    }catch(e){
+      next(e);
     }
   }
 )
