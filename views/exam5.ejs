@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr>
-            for (cont of contact){%>
+            <% for (cont of Contacts){%>
                 <td><%= cont.name%></td>
                 <td><%= cont.email%></td>
                 <td><%= cont.phone%></td>
@@ -27,6 +27,8 @@
     <input type="text" name="email"> : -email
     <br>
     <input type="number" name="phone"> : -phone
+    <br>
     <input type="text" name="comment">: -comment
+    <br>
     <input type="submit">
 </form>
